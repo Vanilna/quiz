@@ -2,13 +2,22 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr) 14px;
-  background-color: var(--yellow);
+  background-image: url(./../../assets/bckg.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
   height: 100vh;
 }
 
 .Logo {
   grid-column: 2 / 3;
   grid-row: 1 / 3;
+}
+
+.StartButton {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  justify-self: center;
+  align-self: center;
 }
 
 .Reference {

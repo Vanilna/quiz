@@ -1,14 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router";
-import { connect } from "react-redux";
 
 import classes from "./StartQuiz.module.css";
-import Button from "./../../components/Button/Button";
-import * as actions from "../../store/actions/index";
+import Button from "../Button/Button";
 
 const StartQuiz = props => {
   const startQuiz = () => {
-    props.onQuizInit();
     props.history.push("/:0");
   };
 
@@ -24,10 +21,4 @@ const StartQuiz = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onQuizInit: () => dispatch(actions.fetchQuestions())
-  };
-};
-
-export default connect(null, mapDispatchToProps)(withRouter(StartQuiz));
+export default withRouter(StartQuiz);

@@ -1,18 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  useHistory
+} from "react-router-dom";
 import { connect } from "react-redux";
 
 import logo from "./../../assets/logo.png";
 import classes from "./App.module.css";
-import Button from "../../components/Button/Button";
+import StartQuiz from "./../StartQuiz/StartQuiz";
 import Question from "../../components/Question/Question";
 import * as actions from "../../store/actions/index";
 
 function App(props) {
-  const startQuiz = () => {
-    props.onQuizInit();
-    props.history.push("/:0");
-  };
+  // const history = useHistory();
 
   return (
     <Router>
@@ -21,17 +23,8 @@ function App(props) {
           <img src={logo} alt="Quiz time" />
         </header>
         <Switch>
-          <Route path="/" exact>
-            <div className={classes.StartButton}>
-              <Button
-                type="button"
-                styling="normal"
-                handleClick={startQuiz}
-                name="Start Quiz"
-              />
-            </div>
-          </Route>
           <Route path={"/:id"} exact component={Question} />
+          <Route path="/" exact component={StartQuiz} />
         </Switch>
 
         <p className={classes.Reference}>

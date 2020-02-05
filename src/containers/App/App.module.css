@@ -13,13 +13,6 @@
   grid-row: 1 / 3;
 }
 
-.StartButton {
-  grid-column: 2 / 3;
-  grid-row: 3 / 4;
-  justify-self: center;
-  align-self: center;
-}
-
 .Reference {
   grid-column: 1 / -1;
   grid-row: -2 / -1;

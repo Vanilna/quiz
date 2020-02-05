@@ -1,22 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
 import logo from "./../../assets/logo.png";
 import classes from "./App.module.css";
 import Button from "../../components/Button/Button";
 import Question from "../../components/Question/Question";
+import * as actions from "../../store/actions/index";
 
-function App() {
-  async function startQuiz() {
-    const questions = await fetch("https://opentdb.com/api.php?amount=10")
-      .then(response => response.json())
-      .then(questionsJSON => {
-        console.log(questionsJSON);
-      })
-      .catch(error => console.error(error));
-
-    return questions;
-  }
+function App(props) {
+  const startQuiz = () => {
+    props.onQuizInit();
+    props.history.push("/:0");
+  };
 
   return (
     <Router>
@@ -49,4 +45,18 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProp = state => {
+  return {
+    questions: state.questions,
+    answers: state.questions
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAnswerSubmit: answer => dispatch(actions.setAnswer(answer)),
+    onQuizInit: () => dispatch(actions.fetchQuestions())
+  };
+};
+
+export default connect(mapStateToProp, mapDispatchToProps)(App);

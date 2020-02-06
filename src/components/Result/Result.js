@@ -9,7 +9,7 @@ const Result = props => {
     <div className={classes.Result}>
       <h2 className={classes.Heading}>Your result is:</h2>
       <p className={classes.Number}>
-        {props.answers}/{props.length}
+        {props.answers}/{props.length * 5}
       </p>
       <Button
         type="button"

@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
         questions: action.questions
       };
     case actionTypes.SET_ANSWER:
-      const newAnswer = action.answer ? state.answers + 1 : state.answers;
+      const newAnswer = action.answer ? state.answers + 5 : state.answers;
       return {
         ...state,
         answers: newAnswer

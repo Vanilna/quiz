@@ -6,23 +6,26 @@ import logo from "./../../assets/logo.png";
 import classes from "./App.module.css";
 import StartQuiz from "../../components/StartQuiz/StartQuiz";
 import Question from "../../components/Question/Question";
+import Result from "../../components/Result/Result";
 import * as actions from "../../store/actions/index";
 
 function App(props) {
-  const [logoClass, setLogoClass] = useState(classes.Logo);
   useEffect(props.onQuizInit, []);
-
-  const logoHandler = () => {
-    setLogoClass(classes["Logo--quiz"]);
-  };
 
   return (
     <Router>
       <div className={classes.App}>
-        <header className={logoClass}>
+        <header className={classes.Logo}>
           <img src={logo} alt="Quiz time" />
         </header>
         <Switch>
+          <Route
+            path="/result"
+            exact
+            render={() => (
+              <Result length={props.questions.length} answers={props.answers} />
+            )}
+          />
           <Route
             path={"/:id"}
             exact
@@ -33,11 +36,7 @@ function App(props) {
               />
             )}
           />
-          <Route
-            path="/"
-            exact
-            render={() => <StartQuiz changeLogo={logoHandler} />}
-          />
+          <Route path="/" exact component={StartQuiz} />
         </Switch>
 
         <p className={classes.Reference}>
@@ -61,7 +60,7 @@ const mapStateToProp = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onQuizInit: () => dispatch(actions.fetchQuestions()),
-    onAnswerSubmit: (answer, id) => dispatch(actions.setAnswer(answer, id))
+    onAnswerSubmit: answer => dispatch(actions.setAnswer(answer))
   };
 };
 

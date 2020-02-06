@@ -2,7 +2,7 @@ import * as actionTypes from "./actions/actionTypes";
 
 const initialState = {
   questions: [],
-  answers: []
+  answers: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,12 +13,10 @@ const reducer = (state = initialState, action) => {
         questions: action.questions
       };
     case actionTypes.SET_ANSWER:
+      const newAnswer = action.answer ? state.answers + 1 : state.answers;
       return {
         ...state,
-        answers: {
-          ...state.answers,
-          [action.payload.id]: action.payload.answer
-        }
+        answers: newAnswer
       };
     default:
       return state;

@@ -5,13 +5,18 @@ import Button from "../Button/Button";
 
 const Question = props => {
   const id = props.match.params.id.slice(1);
-  if (id === props.questions.length - 1) {
-    // REDIRECT
+  if (+id === props.questions.length - 1) {
+    props.history.push("/result");
   }
   const answers = [...props.questions[id].incorrect_answers];
   const correctAnswer = props.questions[id].correct_answer;
   const randomIndex = (Math.random() * 3).toFixed(0);
   answers.splice(randomIndex, 0, correctAnswer);
+
+  const submitAnswer = result => {
+    props.submitHandler(result);
+    props.history.push(`/:${parseFloat(id) + 1}`);
+  };
 
   const answerElements = answers.map(answer => {
     const result = answer === correctAnswer ? true : false;
@@ -19,11 +24,12 @@ const Question = props => {
       <Button
         type="button"
         name={answer}
-        handleClick={() => props.submitHandler(result, id)}
+        handleClick={() => submitAnswer(result)}
         key={answer}
       />
     );
   });
+
   const disabled = id === "0" ? true : false;
 
   return (

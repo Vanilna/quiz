@@ -5,17 +5,12 @@ import classes from "./StartQuiz.module.css";
 import Button from "../Button/Button";
 
 const StartQuiz = props => {
-  const startQuiz = () => {
-    props.changeLogo();
-    props.history.push("/:0");
-  };
-
   return (
     <div className={classes.StartButton}>
       <Button
         type="button"
         styling="normal"
-        handleClick={startQuiz}
+        handleClick={() => props.history.push("/:0")}
         name="Start Quiz"
       />
     </div>

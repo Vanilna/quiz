@@ -1,0 +1,21 @@
+.Result {
+  grid-column: 1 / -1;
+  grid-row: 3 / 4;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+  font-family: "Londrina Solid", cursive;
+}
+
+.Heading {
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.Number {
+  font-size: 5rem;
+  font-weight: 400;
+  color: var(--red);
+}

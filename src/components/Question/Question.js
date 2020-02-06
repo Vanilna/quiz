@@ -24,12 +24,14 @@ const Question = props => {
       />
     );
   });
+  const disabled = id === "0" ? true : false;
 
   return (
     <Fragment>
       <div className={classes.Navigation}>
         <Button
           type="button"
+          disabled={disabled}
           name="back"
           handleClick={() => {
             props.history.goBack();

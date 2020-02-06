@@ -34,4 +34,4 @@ Builds the app for production.
     └── README.md                # README file
 
 ## Demo
-https://vanilna.github.io/quiz/
+https://quiz-vanilna.netlify.com/

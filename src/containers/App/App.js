@@ -1,10 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import logo from "./../../assets/logo.png";
@@ -26,14 +21,12 @@ function App(props) {
         <Switch>
           <Route
             path="/result"
-            exact
             render={() => (
               <Result length={props.questions.length} answers={props.answers} />
             )}
           />
           <Route
             path={"/:id"}
-            exact
             render={() => (
               <Question
                 questions={props.questions}

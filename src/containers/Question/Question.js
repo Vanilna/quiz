@@ -7,10 +7,12 @@ import Button from "../../components/Button/Button";
 import * as actions from "../../store/actions/index";
 
 const Question = props => {
+  // redirect to start page on browser refresh
   if (props.questions.length === 0) {
     return <Redirect to="/" />;
   }
 
+  // redirect to result page after last question
   const id = props.match.params.id.slice(1);
   if (+id === props.questions.length - 1) {
     props.history.push("/result");
@@ -21,11 +23,11 @@ const Question = props => {
     props.history.push(`/:${parseFloat(id) + 1}`);
   };
 
+  // shuffle answers
   const answers = [...props.questions[id].incorrect_answers];
   const correctAnswer = props.questions[id].correct_answer;
   const randomIndex = (Math.random() * 3).toFixed(0);
   answers.splice(randomIndex, 0, correctAnswer);
-
   const answerElements = answers.map(answer => {
     const result = answer === correctAnswer ? true : false;
     return (
@@ -38,6 +40,7 @@ const Question = props => {
     );
   });
 
+  // prevent returning to start page when clicking "back"
   const disabledBackButton = id === "0" ? true : false;
 
   return (

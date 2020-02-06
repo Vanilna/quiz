@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import logo from "./../../assets/logo.png";
 import classes from "./App.module.css";
 import StartQuiz from "../../components/StartQuiz/StartQuiz";
-import Question from "../../components/Question/Question";
+import Question from "../Question/Question";
 import Result from "../../components/Result/Result";
 import * as actions from "../../store/actions/index";
 

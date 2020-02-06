@@ -3,7 +3,7 @@ import { withRouter, Redirect } from "react-router";
 import { connect } from "react-redux";
 
 import classes from "./Question.module.css";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import * as actions from "../../store/actions/index";
 
 const Question = props => {

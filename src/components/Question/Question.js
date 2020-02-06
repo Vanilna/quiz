@@ -1,11 +1,13 @@
 import React, { Fragment } from "react";
 import { withRouter, Redirect } from "react-router";
+import { connect } from "react-redux";
+
 import classes from "./Question.module.css";
 import Button from "../Button/Button";
+import * as actions from "../../store/actions/index";
 
 const Question = props => {
   if (props.questions.length === 0) {
-    console.log("here");
     return <Redirect to="/" />;
   }
 
@@ -14,15 +16,15 @@ const Question = props => {
     props.history.push("/result");
   }
 
+  const submitAnswer = result => {
+    props.onAnswerSubmit(result);
+    props.history.push(`/:${parseFloat(id) + 1}`);
+  };
+
   const answers = [...props.questions[id].incorrect_answers];
   const correctAnswer = props.questions[id].correct_answer;
   const randomIndex = (Math.random() * 3).toFixed(0);
   answers.splice(randomIndex, 0, correctAnswer);
-
-  const submitAnswer = result => {
-    props.submitHandler(result);
-    props.history.push(`/:${parseFloat(id) + 1}`);
-  };
 
   const answerElements = answers.map(answer => {
     const result = answer === correctAnswer ? true : false;
@@ -65,4 +67,19 @@ const Question = props => {
   );
 };
 
-export default withRouter(Question);
+const mapStateToProp = state => {
+  return {
+    questions: state.questions
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAnswerSubmit: answer => dispatch(actions.setAnswer(answer))
+  };
+};
+
+export default connect(
+  mapStateToProp,
+  mapDispatchToProps
+)(withRouter(Question));

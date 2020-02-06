@@ -25,15 +25,7 @@ function App(props) {
               <Result length={props.questions.length} answers={props.answers} />
             )}
           />
-          <Route
-            path={"/:id"}
-            render={() => (
-              <Question
-                questions={props.questions}
-                submitHandler={props.onAnswerSubmit}
-              />
-            )}
-          />
+          <Route path={"/:id"} component={Question} />
           <Route path="/" exact component={StartQuiz} />
         </Switch>
 

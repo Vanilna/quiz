@@ -1,0 +1,46 @@
+.Navigation {
+  grid-column: 1 / -1;
+  grid-row: 2 / 3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Answers {
+  grid-column: 1 / 2;
+  grid-row: 3 / 7;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  justify-items: center;
+  align-items: center;
+}
+
+.Question {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  color: #000;
+  font-family: "Londrina Solid", cursive;
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+@media (min-width: 500px) {
+  .Navigation {
+    grid-column: -2 / -1;
+    grid-row: 1 / 2;
+    justify-content: space-between;
+  }
+  .Answers {
+    grid-column: 2 / -1;
+    grid-row: 2 / 4;
+    display: grid;
+    padding: 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+}

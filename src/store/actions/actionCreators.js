@@ -1,9 +1,12 @@
 import * as actionTypes from "./actionTypes";
 
-export const setAnswer = answer => {
+export const setAnswer = (answer, id) => {
   return {
     type: actionTypes.SET_ANSWER,
-    answer: answer
+    payload: {
+      answer: answer,
+      id: id
+    }
   };
 };
 

@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 
 const StartQuiz = props => {
   const startQuiz = () => {
+    props.changeLogo();
     props.history.push("/:0");
   };
 

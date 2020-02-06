@@ -13,33 +13,40 @@ const Question = props => {
   const randomIndex = (Math.random() * 3).toFixed(0);
   answers.splice(randomIndex, 0, correctAnswer);
 
-  const answerElements = answers.map(answer => (
-    <Button
-      type="button"
-      name={answer}
-      handleClick={answer => props.onAnswerSubmit(answer)}
-      key={answer}
-    />
-  ));
+  const answerElements = answers.map(answer => {
+    const result = answer === correctAnswer ? true : false;
+    return (
+      <Button
+        type="button"
+        name={answer}
+        handleClick={() => props.submitHandler(result, id)}
+        key={answer}
+      />
+    );
+  });
 
   return (
     <Fragment>
-      <Button
-        type="button"
-        name="back"
-        handleClick={() => {
-          props.history.goBack();
-        }}
-      />
-      <Button
-        type="button"
-        name="skip"
-        handleClick={() => {
-          props.history.push(`/:${parseFloat(id) + 1}`);
-        }}
-      />
-      <p className={classes.Question}>{props.questions[id].question}</p>
-      {answerElements}
+      <div className={classes.Navigation}>
+        <Button
+          type="button"
+          name="back"
+          handleClick={() => {
+            props.history.goBack();
+          }}
+        />
+        <Button
+          type="button"
+          name="skip"
+          handleClick={() => {
+            props.history.push(`/:${parseFloat(id) + 1}`);
+          }}
+        />
+      </div>
+      <div className={classes.Answers}>
+        <p className={classes.Question}>{props.questions[id].question}</p>
+        {answerElements}
+      </div>
     </Fragment>
   );
 };

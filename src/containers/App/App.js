@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -9,26 +9,35 @@ import Question from "../../components/Question/Question";
 import * as actions from "../../store/actions/index";
 
 function App(props) {
+  const [logoClass, setLogoClass] = useState(classes.Logo);
   useEffect(props.onQuizInit, []);
+
+  const logoHandler = () => {
+    setLogoClass(classes["Logo--quiz"]);
+  };
 
   return (
     <Router>
       <div className={classes.App}>
-        <header className={classes.Logo}>
+        <header className={logoClass}>
           <img src={logo} alt="Quiz time" />
         </header>
         <Switch>
           <Route
             path={"/:id"}
             exact
-            component={() => (
+            render={() => (
               <Question
                 questions={props.questions}
                 submitHandler={props.onAnswerSubmit}
               />
             )}
           />
-          <Route path="/" exact component={StartQuiz} />
+          <Route
+            path="/"
+            exact
+            render={() => <StartQuiz changeLogo={logoHandler} />}
+          />
         </Switch>
 
         <p className={classes.Reference}>
@@ -45,14 +54,14 @@ function App(props) {
 const mapStateToProp = state => {
   return {
     questions: state.questions,
-    answers: state.questions
+    answers: state.answers
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onQuizInit: () => dispatch(actions.fetchQuestions()),
-    onAnswerSubmit: answer => dispatch(actions.setAnswer(answer))
+    onAnswerSubmit: (answer, id) => dispatch(actions.setAnswer(answer, id))
   };
 };
 

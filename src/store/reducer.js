@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         answers: {
           ...state.answers,
-          id: action.answer
+          [action.payload.id]: action.payload.answer
         }
       };
     default:

@@ -49,8 +49,7 @@ const mapStateToProp = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onQuizInit: () => dispatch(actions.fetchQuestions()),
-    onAnswerSubmit: answer => dispatch(actions.setAnswer(answer))
+    onQuizInit: () => dispatch(actions.fetchQuestions())
   };
 };
 

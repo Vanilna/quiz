@@ -2,11 +2,10 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(auto-fit, 1fr) 14px;
-  background-image: url(./../../assets/bckg.svg);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100vh;
+  min-height: 90vh;
   padding: 1rem;
 }
 
@@ -14,6 +13,10 @@
   grid-column: 1 / 2;
   grid-row: 1 /2;
   justify-self: center;
+}
+
+.Logo__img {
+  width: 100%;
 }
 
 .Reference {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -8,21 +8,29 @@ import StartQuiz from "../../components/StartQuiz/StartQuiz";
 import Question from "../Question/Question";
 import Result from "../../components/Result/Result";
 import * as actions from "../../store/actions/index";
+import bkgrd from "../../assets/bckg.svg";
 
-function App(props) {
-  useEffect(props.onQuizInit, []);
+function App({ onQuizInit, questions, answers }) {
+  const app = useRef(null);
+
+  useEffect(() => {
+    const windowHeight = window.innerHeight;
+    document.body.style.height = windowHeight;
+    document.body.style.backgroundImage = `url(${bkgrd})`;
+    onQuizInit();
+  }, [onQuizInit]);
 
   return (
     <Router>
-      <div className={classes.App}>
+      <div className={classes.App} ref={app}>
         <header className={classes.Logo}>
-          <img src={logo} alt="Quiz time" />
+          <img src={logo} alt="Quiz time" className={classes.Logo__img} />
         </header>
         <Switch>
           <Route
             path="/result"
             render={() => (
-              <Result length={props.questions.length} answers={props.answers} />
+              <Result length={questions.length} answers={answers} />
             )}
           />
           <Route path={"/:id"} component={Question} />

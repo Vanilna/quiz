@@ -15,8 +15,8 @@ function App({ onQuizInit, questions, answers }) {
 
   useEffect(() => {
     const windowHeight = window.innerHeight;
-    app.current.height = windowHeight;
-    app.current.style.backgroundImage = `url(${bkgrd})`;
+    document.body.style.height = windowHeight;
+    document.body.style.backgroundImage = `url(${bkgrd})`;
     onQuizInit();
   }, [onQuizInit]);
 

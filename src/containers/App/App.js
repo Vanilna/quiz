@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -9,12 +9,18 @@ import Question from "../Question/Question";
 import Result from "../../components/Result/Result";
 import * as actions from "../../store/actions/index";
 
-function App(props) {
-  useEffect(props.onQuizInit, []);
+function App({ onQuizInit, questions, answers }) {
+  const app = useRef(null);
+
+  useEffect(() => {
+    const windowHeight = window.innerHeight;
+    app.current.height = windowHeight;
+    onQuizInit();
+  }, [onQuizInit]);
 
   return (
     <Router>
-      <div className={classes.App}>
+      <div className={classes.App} ref={app}>
         <header className={classes.Logo}>
           <img src={logo} alt="Quiz time" className={classes.Logo__img} />
         </header>
@@ -22,7 +28,7 @@ function App(props) {
           <Route
             path="/result"
             render={() => (
-              <Result length={props.questions.length} answers={props.answers} />
+              <Result length={questions.length} answers={answers} />
             )}
           />
           <Route path={"/:id"} component={Question} />

@@ -36,6 +36,8 @@
   .Answers {
     grid-column: 2 / -1;
     grid-row: 2 / 4;
+    width: 100%;
+    max-width: 100%;
     display: grid;
     padding: 0;
     grid-template-columns: 1fr 1fr;

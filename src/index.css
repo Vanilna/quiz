@@ -13,3 +13,6 @@
   margin: inherit;
   box-sizing: inherit;
 }
+body {
+  background-color: var(--yellow);
+}

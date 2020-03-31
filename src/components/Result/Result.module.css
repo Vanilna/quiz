@@ -1,6 +1,6 @@
 .Result {
   grid-column: 1 / -1;
-  grid-row: 3 / 4;
+  grid-row: 2 / 4;
   display: grid;
   justify-content: center;
   align-content: center;

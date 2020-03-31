@@ -1,7 +1,7 @@
 .App {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(auto-fit, 1fr) 14px;
+  grid-template-rows: repeat(3, auto) 14px;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

@@ -5,7 +5,7 @@
 .Button {
   background-color: var(--dark-yellow);
   color: #fff;
-  padding: 0.7rem 2.5rem;
+  padding: 0.5rem 1.5rem;
   border: none;
   font-family: "Londrina Solid", cursive;
   font-weight: 300;
@@ -17,6 +17,7 @@
 @media (min-width: 500px) {
   .Button {
     max-width: 30vw;
+    padding: 0.7rem 2.5rem;
   }
 }
 

@@ -9,7 +9,7 @@
 .Answers {
   grid-column: 1 / 2;
   grid-row: 3 / 7;
-  padding: 3rem;
+  padding: 1.5rem 1rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
@@ -24,7 +24,8 @@
   color: #000;
   font-family: "Londrina Solid", cursive;
   font-weight: 300;
-  font-size: 2rem;
+  font-size: 1.4rem;
+  word-break: break-word;
 }
 
 @media (min-width: 500px) {
@@ -32,6 +33,9 @@
     grid-column: -2 / -1;
     grid-row: 1 / 2;
     justify-content: space-between;
+  }
+  .Question {
+    font-size: 2rem;
   }
   .Answers {
     grid-column: 2 / -1;

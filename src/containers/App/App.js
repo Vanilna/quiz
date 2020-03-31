@@ -16,7 +16,7 @@ function App(props) {
     <Router>
       <div className={classes.App}>
         <header className={classes.Logo}>
-          <img src={logo} alt="Quiz time" />
+          <img src={logo} alt="Quiz time" className={classes.Logo__img} />
         </header>
         <Switch>
           <Route

@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(auto-fit, 1fr) 14px;
-  background-image: url(/static/media/bckg.3d72ab0e.svg);
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;

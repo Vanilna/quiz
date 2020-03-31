@@ -8,6 +8,7 @@ import StartQuiz from "../../components/StartQuiz/StartQuiz";
 import Question from "../Question/Question";
 import Result from "../../components/Result/Result";
 import * as actions from "../../store/actions/index";
+import bkgrd from "../../assets/bckg.svg";
 
 function App({ onQuizInit, questions, answers }) {
   const app = useRef(null);
@@ -15,6 +16,7 @@ function App({ onQuizInit, questions, answers }) {
   useEffect(() => {
     const windowHeight = window.innerHeight;
     app.current.height = windowHeight;
+    app.current.style.backgroundImage = `url(${bkgrd})`;
     onQuizInit();
   }, [onQuizInit]);
 
